@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-hello
+spec:
+  selector:
+    matchLabels:
+      app: web-hello
+  template:
+    metadata:
+      labels:
+        app: web-hello
+    spec:
+      containers:
+      - name: web-hello
+        image: sawilkhan/web-hello
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 3000
+  replicas: 5
